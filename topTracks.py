@@ -91,7 +91,10 @@ for track_id in trackIDs:
         key = "None"
     # song name
     s = requests.get(BASE_URL + 'tracks/' + track_id, headers=headers)
-    s = s.json()['name']
+    try:
+        s = s.json()['name']
+    except:
+        s = "Unknown"
     print(s+"____"+str(dance))
     print("tempo: "+str(tempo)+" | " + "key: " +str(key))
     danceDic["song"] = s
